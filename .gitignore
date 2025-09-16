@@ -144,6 +144,7 @@ ENV/
 env.bak/
 venv.bak/
 notebook/catboost_info/
+artifacts/
 
 
 # Spyder project settings
