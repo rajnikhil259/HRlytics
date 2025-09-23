@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Attrition Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f2f2; }
+        .form-container {
+            width: 600px; margin: 40px auto; background: #fff; padding: 25px;
+            border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        h2 { text-align: center; margin-bottom: 20px; }
+        label { display: block; margin: 10px 0 5px; font-weight: bold; }
+        select, input {
+            width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;
+        }
+        button {
+            width: 100%; padding: 12px; background: #28a745; color: white;
+            border: none; border-radius: 6px; font-size: 16px; cursor: pointer;
+        }
+        button:hover { background: #218838; }
+        .result { text-align: center; font-size: 18px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Enter Employee Details</h2>
+        <form action="/predictdata" method="POST">
+
+            <!-- Categorical Features -->
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="department">Department</label>
+            <select name="department" id="department" required>
+                <option value="">Select</option>
+                <option value="Sales">Sales</option>
+                <option value="Research & Development">Research & Development</option>
+                <option value="Human Resources">Human Resources</option>
+            </select>
+
+            <label for="jobrole">Job Role</label>
+            <select name="jobrole" id="jobrole" required>
+                <option value="">Select</option>
+                <option value="Manager">Manager</option>
+                <option value="Research Scientist">Research Scientist</option>
+                <option value="Laboratory Technician">Laboratory Technician</option>
+                <option value="Sales Executive">Sales Executive</option>
+                <option value="Sales Representative">Sales Representative</option>
+                <option value="Healthcare Representative">Healthcare Representative</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Manufacturing Director">Manufacturing Director</option>
+                <option value="Technical Architect">Technical Architect</option>
+            </select>
+
+            <label for="maritalstatus">Marital Status</label>
+            <select name="maritalstatus" id="maritalstatus" required>
+                <option value="">Select</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+            </select>
+
+            <label for="overtime">OverTime</label>
+            <select name="overtime" id="overtime" required>
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="businesstravel">Business Travel</label>
+            <select name="businesstravel" id="businesstravel" required>
+                <option value="">Select</option>
+                <option value="Travel_Rarely">Travel Rarely</option>
+                <option value="Travel_Frequently">Travel Frequently</option>
+                <option value="Non-Travel">Non-Travel</option>
+            </select>
+
+            <label for="educationfield">Education Field</label>
+            <select name="educationfield" id="educationfield" required>
+                <option value="">Select</option>
+                <option value="Life Sciences">Life Sciences</option>
+                <option value="Medical">Medical</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Technical Degree">Technical Degree</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <!-- Numerical Features -->
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" min="18" max="65" required>
+
+            <label for="monthlyincome">Monthly Income</label>
+            <input type="number" name="monthlyincome" id="monthlyincome" required>
+
+            <label for="distancefromhome">Distance From Home (km)</label>
+            <input type="number" name="distancefromhome" id="distancefromhome" required>
+
+            <label for="yearsatcompany">Years at Company</label>
+            <input type="number" name="yearsatcompany" id="yearsatcompany" min="0" required>
+
+            <label for="totalworkingyears">Total Working Years</label>
+            <input type="number" name="totalworkingyears" id="totalworkingyears" min="0" required>
+
+            <label for="yearsinrole">Years in Current Role</label>
+            <input type="number" name="yearsinrole" id="yearsinrole" min="0" required>
+
+            <label for="trainingtimeslastyear">Training Times Last Year</label>
+            <input type="number" name="trainingtimeslastyear" id="trainingtimeslastyear" min="0" required>
+
+            <label for="numcompaniesworked">Number of Companies Worked</label>
+            <input type="number" name="numcompaniesworked" id="numcompaniesworked" min="0" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if results is defined %}
+        <div class="result">
+            <strong>Prediction Result:</strong> 
+            {% if results == 1 %}
+                Employee is <span style="color:red;">Likely to Leave</span>
+            {% else %}
+                Employee is <span style="color:green;">Likely to Stay</span>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
