@@ -6,7 +6,7 @@ import pickle
 class PredictPipeline:
     def __init__(self):
         model_path = os.path.join("artifacts", "model.pkl")
-        preprocessor_path = os.path.join("artifacts", "preprocessor.pkl")
+        preprocessor_path = os.path.join("artifacts", "proprocessor.pkl")
 
         with open(model_path, "rb") as f:
             self.model = pickle.load(f)

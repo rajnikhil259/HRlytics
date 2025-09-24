@@ -59,7 +59,9 @@ def predict_datapoint():
 
             prediction = "Yes (Attrition Likely)" if results[0] == 1 else "No (Attrition Unlikely)"
 
-            return render_template('home.html', results=prediction)
+            probability = predict_pipeline.predict_proba(pred_df)[0][1] * 100
+
+            return render_template('home.html', results=prediction, prob=round(probability, 2))
 
         except Exception as e:
             return render_template('home.html', results=f"Error: {str(e)}")

@@ -4,85 +4,153 @@
     <meta charset="UTF-8">
     <title>Employee Attrition Prediction</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f2f2f2; }
-        .form-container {
-            width: 600px; margin: 40px auto; background: #fff; padding: 25px;
-            border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
         }
-        h2 { text-align: center; margin-bottom: 20px; }
-        label { display: block; margin: 10px 0 5px; font-weight: bold; }
-        select, input {
-            width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;
+        h1 {
+            text-align: center;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 900px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .full-width {
+            grid-column: span 2;
+            text-align: center;
         }
         button {
-            width: 100%; padding: 12px; background: #28a745; color: white;
-            border: none; border-radius: 6px; font-size: 16px; cursor: pointer;
+            background: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        button:hover { background: #218838; }
-        .result { text-align: center; font-size: 18px; margin-top: 20px; }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Enter Employee Details</h2>
-        <form action="/predictdata" method="POST">
 
-            <!-- Categorical Features -->
-            <label for="gender">Gender</label>
-            <select name="gender" id="gender" required>
-                <option value="">Select</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+    <h1>Employee Attrition Prediction</h1>
+
+    <form action="/predictdata" method="POST">
+        <!-- Numeric Inputs -->
+        <label>Age: <input type="number" name="Age" required></label>
+        <label>Distance From Home: <input type="number" name="DistanceFromHome" required></label>
+        <label>Number of Companies Worked: <input type="number" name="NumCompaniesWorked" required></label>
+        <label>Percent Salary Hike: <input type="number" name="PercentSalaryHike" required></label>
+        <label>Stock Option Level: <input type="number" name="StockOptionLevel" required></label>
+        <label>Training Times Last Year: <input type="number" name="TrainingTimesLastYear" required></label>
+        <label>Years At Company: <input type="number" name="YearsAtCompany" required></label>
+        <label>Years Since Last Promotion: <input type="number" name="YearsSinceLastPromotion" required></label>
+        <label>Years With Current Manager: <input type="number" name="YearsWithCurrManager" required></label>
+        <label>Monthly Income: <input type="number" name="MonthlyIncome" required></label>
+        <label>Total Working Years: <input type="number" name="TotalWorkingYears" required></label>
+        <label>Years In Current Role: <input type="number" name="YearsInCurrentRole" required></label>
+
+        <!-- Label Encoded (1-4 or 1-5 values depending on dataset) -->
+        <label>Education:
+            <select name="Education" required>
+                <option value="1">Below College</option>
+                <option value="2">College</option>
+                <option value="3">Bachelor</option>
+                <option value="4">Master</option>
+                <option value="5">Doctor</option>
             </select>
+        </label>
+        <label>Environment Satisfaction:
+            <select name="EnvironmentSatisfaction" required>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+                <option value="4">Very High</option>
+            </select>
+        </label>
+        <label>Job Involvement:
+            <select name="JobInvolvement" required>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+                <option value="4">Very High</option>
+            </select>
+        </label>
+        <label>Job Satisfaction:
+            <select name="JobSatisfaction" required>
+                <option value="1">Low</option>
+                <option value="2">Good</option>
+                <option value="3">High</option>
+                <option value="4">Very High</option>
+            </select>
+        </label>
+        <label>Performance Rating:
+            <select name="PerformanceRating" required>
+                <option value="3">Excellent</option>
+                <option value="4">Outstanding</option>
+            </select>
+        </label>
+        <label>Relationship Satisfaction:
+            <select name="RelationshipSatisfaction" required>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+                <option value="4">Very High</option>
+            </select>
+        </label>
+        <label>Work-Life Balance:
+            <select name="WorkLifeBalance" required>
+                <option value="1">Bad</option>
+                <option value="2">Good</option>
+                <option value="3">Better</option>
+                <option value="4">Best</option>
+            </select>
+        </label>
 
-            <label for="department">Department</label>
-            <select name="department" id="department" required>
-                <option value="">Select</option>
+        <!-- One Hot Encoded -->
+        <label>Business Travel:
+            <select name="BusinessTravel" required>
+                <option value="Non-Travel">Non-Travel</option>
+                <option value="Travel_Rarely">Travel Rarely</option>
+                <option value="Travel_Frequently">Travel Frequently</option>
+            </select>
+        </label>
+        <label>Department:
+            <select name="Department" required>
                 <option value="Sales">Sales</option>
                 <option value="Research & Development">Research & Development</option>
                 <option value="Human Resources">Human Resources</option>
             </select>
-
-            <label for="jobrole">Job Role</label>
-            <select name="jobrole" id="jobrole" required>
-                <option value="">Select</option>
-                <option value="Manager">Manager</option>
-                <option value="Research Scientist">Research Scientist</option>
-                <option value="Laboratory Technician">Laboratory Technician</option>
-                <option value="Sales Executive">Sales Executive</option>
-                <option value="Sales Representative">Sales Representative</option>
-                <option value="Healthcare Representative">Healthcare Representative</option>
-                <option value="Human Resources">Human Resources</option>
-                <option value="Manufacturing Director">Manufacturing Director</option>
-                <option value="Technical Architect">Technical Architect</option>
-            </select>
-
-            <label for="maritalstatus">Marital Status</label>
-            <select name="maritalstatus" id="maritalstatus" required>
-                <option value="">Select</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Divorced">Divorced</option>
-            </select>
-
-            <label for="overtime">OverTime</label>
-            <select name="overtime" id="overtime" required>
-                <option value="">Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-
-            <label for="businesstravel">Business Travel</label>
-            <select name="businesstravel" id="businesstravel" required>
-                <option value="">Select</option>
-                <option value="Travel_Rarely">Travel Rarely</option>
-                <option value="Travel_Frequently">Travel Frequently</option>
-                <option value="Non-Travel">Non-Travel</option>
-            </select>
-
-            <label for="educationfield">Education Field</label>
-            <select name="educationfield" id="educationfield" required>
-                <option value="">Select</option>
+        </label>
+        <label>Education Field:
+            <select name="EducationField" required>
                 <option value="Life Sciences">Life Sciences</option>
                 <option value="Medical">Medical</option>
                 <option value="Marketing">Marketing</option>
@@ -90,45 +158,54 @@
                 <option value="Human Resources">Human Resources</option>
                 <option value="Other">Other</option>
             </select>
+        </label>
+        <label>Gender:
+            <select name="Gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </label>
+        <label>Job Role:
+            <select name="JobRole" required>
+                <option value="Sales Executive">Sales Executive</option>
+                <option value="Research Scientist">Research Scientist</option>
+                <option value="Laboratory Technician">Laboratory Technician</option>
+                <option value="Manufacturing Director">Manufacturing Director</option>
+                <option value="Healthcare Representative">Healthcare Representative</option>
+                <option value="Manager">Manager</option>
+                <option value="Sales Representative">Sales Representative</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Technician">Technician</option>
+            </select>
+        </label>
+        <label>Marital Status:
+            <select name="MaritalStatus" required>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+            </select>
+        </label>
+        <label>OverTime:
+            <select name="OverTime" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label>
 
-            <!-- Numerical Features -->
-            <label for="age">Age</label>
-            <input type="number" name="age" id="age" min="18" max="65" required>
-
-            <label for="monthlyincome">Monthly Income</label>
-            <input type="number" name="monthlyincome" id="monthlyincome" required>
-
-            <label for="distancefromhome">Distance From Home (km)</label>
-            <input type="number" name="distancefromhome" id="distancefromhome" required>
-
-            <label for="yearsatcompany">Years at Company</label>
-            <input type="number" name="yearsatcompany" id="yearsatcompany" min="0" required>
-
-            <label for="totalworkingyears">Total Working Years</label>
-            <input type="number" name="totalworkingyears" id="totalworkingyears" min="0" required>
-
-            <label for="yearsinrole">Years in Current Role</label>
-            <input type="number" name="yearsinrole" id="yearsinrole" min="0" required>
-
-            <label for="trainingtimeslastyear">Training Times Last Year</label>
-            <input type="number" name="trainingtimeslastyear" id="trainingtimeslastyear" min="0" required>
-
-            <label for="numcompaniesworked">Number of Companies Worked</label>
-            <input type="number" name="numcompaniesworked" id="numcompaniesworked" min="0" required>
-
-            <button type="submit">Predict</button>
-        </form>
-
-        {% if results is defined %}
-        <div class="result">
-            <strong>Prediction Result:</strong> 
-            {% if results == 1 %}
-                Employee is <span style="color:red;">Likely to Leave</span>
-            {% else %}
-                Employee is <span style="color:green;">Likely to Stay</span>
-            {% endif %}
+        <!-- Submit -->
+        <div class="full-width">
+            <button type="submit">Predict Attrition</button>
         </div>
-        {% endif %}
-    </div>
+    </form>
+
+   {% if results %}
+<div class="result">
+    <p><strong>Prediction Result:</strong> {{ results }}</p>
+    {% if prob is defined %}
+        <p><strong>Attrition Probability:</strong> {{ prob }}%</p>
+    {% endif %}
+</div>
+{% endif %}
+
 </body>
 </html>
