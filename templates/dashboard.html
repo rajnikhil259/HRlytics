@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f2f2; }
+        h1 { text-align: center; }
+        .container { max-width: 1000px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background: #007BFF; color: white; }
+        a.button, button { background: #007BFF; color: white; padding: 6px 12px; border: none; border-radius: 5px; text-decoration: none; cursor: pointer; }
+        a.button:hover, button:hover { background: #0056b3; }
+        .add-btn { margin-bottom: 15px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Dashboard</h1>
+        <a href="{{ url_for('add_employee') }}" class="button add-btn">Add Employee</a>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+            {% for emp in employees %}
+            <tr>
+                <td>{{ emp.name }}</td>
+                <td>{{ emp.age }}</td>
+                <td>{{ emp.department }}</td>
+                <td>
+                    <a href="{{ url_for('edit_employee', id=emp.id) }}" class="button">Edit</a>
+                    <a href="{{ url_for('delete_employee', id=emp.id) }}" class="button" onclick="return confirm('Delete this employee?');">Delete</a>
+                    <a href="{{ url_for('predict_employee', id=emp.id) }}" class="button">Predict Attrition</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

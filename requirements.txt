@@ -8,4 +8,7 @@ scikit-learn
 imblearn
 dill
 Flask
+flask_sqlalchemy
+dotenv
+psycopg2
 #-e .

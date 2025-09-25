@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f2f2; }
+        .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
+        form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        label { font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        .full-width { grid-column: span 2; text-align: center; }
+        button { background: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Employee</h1>
+        <form method="POST">
+            <label>Name: <input type="text" name="name" value="{{ emp.name }}" required></label>
+            <label>Age: <input type="number" name="age" value="{{ emp.age }}" required></label>
+           <label>Distance From Home: <input type="number" name="DistanceFromHome" value="{{ emp.distance_from_home }}"></label>
+<label>Number of Companies Worked: <input type="number" name="NumCompaniesWorked" value="{{ emp.num_companies_worked }}"></label>
+<label>Percent Salary Hike: <input type="number" name="PercentSalaryHike" value="{{ emp.percent_salary_hike }}"></label>
+<label>Stock Option Level: <input type="number" name="StockOptionLevel" value="{{ emp.stock_option_level }}"></label>
+<label>Training Times Last Year: <input type="number" name="TrainingTimesLastYear" value="{{ emp.training_times_last_year }}"></label>
+<label>Years At Company: <input type="number" name="YearsAtCompany" value="{{ emp.years_at_company }}"></label>
+<label>Years Since Last Promotion: <input type="number" name="YearsSinceLastPromotion" value="{{ emp.years_since_last_promotion }}"></label>
+<label>Years With Current Manager: <input type="number" name="YearsWithCurrManager" value="{{ emp.years_with_curr_manager }}"></label>
+<label>Monthly Income: <input type="number" name="MonthlyIncome" value="{{ emp.monthly_income }}"></label>
+<label>Total Working Years: <input type="number" name="TotalWorkingYears" value="{{ emp.total_working_years }}"></label>
+<label>Years In Current Role: <input type="number" name="YearsInCurrentRole" value="{{ emp.years_in_current_role }}"></label>
+            
+            <label>Education:
+                <select name="Education">
+                    <option value="1" {% if emp.education==1 %}selected{% endif %}>Below College</option>
+                    <option value="2" {% if emp.education==2 %}selected{% endif %}>College</option>
+                    <option value="3" {% if emp.education==3 %}selected{% endif %}>Bachelor</option>
+                    <option value="4" {% if emp.education==4 %}selected{% endif %}>Master</option>
+                    <option value="5" {% if emp.education==5 %}selected{% endif %}>Doctor</option>
+                </select>
+            </label>
+            <label>Environment Satisfaction:
+                <select name="EnvironmentSatisfaction">
+                    <option value="1" {% if emp.environmentsatisfaction==1 %}selected{% endif %}>Low</option>
+                    <option value="2" {% if emp.environmentsatisfaction==2 %}selected{% endif %}>Medium</option>
+                    <option value="3" {% if emp.environmentsatisfaction==3 %}selected{% endif %}>High</option>
+                    <option value="4" {% if emp.environmentsatisfaction==4 %}selected{% endif %}>Very High</option>
+                </select>
+            </label>
+            <label>Job Involvement:
+                <select name="JobInvolvement">
+                    <option value="1" {% if emp.jobinvolvement==1 %}selected{% endif %}>Low</option>
+                    <option value="2" {% if emp.jobinvolvement==2 %}selected{% endif %}>Medium</option>
+                    <option value="3" {% if emp.jobinvolvement==3 %}selected{% endif %}>High</option>
+                    <option value="4" {% if emp.jobinvolvement==4 %}selected{% endif %}>Very High</option>
+                </select>
+            </label>
+            <label>Job Satisfaction:
+                <select name="JobSatisfaction">
+                    <option value="1" {% if emp.jobsatisfaction==1 %}selected{% endif %}>Low</option>
+                    <option value="2" {% if emp.jobsatisfaction==2 %}selected{% endif %}>Good</option>
+                    <option value="3" {% if emp.jobsatisfaction==3 %}selected{% endif %}>High</option>
+                    <option value="4" {% if emp.jobsatisfaction==4 %}selected{% endif %}>Very High</option>
+                </select>
+            </label>
+            <label>Performance Rating:
+                <select name="PerformanceRating">
+                    <option value="3" {% if emp.performancerating==3 %}selected{% endif %}>Excellent</option>
+                    <option value="4" {% if emp.performancerating==4 %}selected{% endif %}>Outstanding</option>
+                </select>
+            </label>
+            <label>Relationship Satisfaction:
+                <select name="RelationshipSatisfaction">
+                    <option value="1" {% if emp.relationshipsatisfaction==1 %}selected{% endif %}>Low</option>
+                    <option value="2" {% if emp.relationshipsatisfaction==2 %}selected{% endif %}>Medium</option>
+                    <option value="3" {% if emp.relationshipsatisfaction==3 %}selected{% endif %}>High</option>
+                    <option value="4" {% if emp.relationshipsatisfaction==4 %}selected{% endif %}>Very High</option>
+                </select>
+            </label>
+            <label>Work-Life Balance:
+                <select name="WorkLifeBalance">
+                    <option value="1" {% if emp.worklifebalance==1 %}selected{% endif %}>Bad</option>
+                    <option value="2" {% if emp.worklifebalance==2 %}selected{% endif %}>Good</option>
+                    <option value="3" {% if emp.worklifebalance==3 %}selected{% endif %}>Better</option>
+                    <option value="4" {% if emp.worklifebalance==4 %}selected{% endif %}>Best</option>
+                </select>
+            </label>
+            
+           
+            <label>Business Travel:
+                <select name="BusinessTravel">
+                    <option value="Non-Travel" {% if emp.businesstravel=="Non-Travel" %}selected{% endif %}>Non-Travel</option>
+                    <option value="Travel_Rarely" {% if emp.businesstravel=="Travel_Rarely" %}selected{% endif %}>Travel Rarely</option>
+                    <option value="Travel_Frequently" {% if emp.businesstravel=="Travel_Frequently" %}selected{% endif %}>Travel Frequently</option>
+                </select>
+            </label>
+            <label>Department:
+                <select name="Department">
+                    <option value="Sales" {% if emp.department=="Sales" %}selected{% endif %}>Sales</option>
+                    <option value="Research & Development" {% if emp.department=="Research & Development" %}selected{% endif %}>Research & Development</option>
+                    <option value="Human Resources" {% if emp.department=="Human Resources" %}selected{% endif %}>Human Resources</option>
+                </select>
+            </label>
+            <label>Education Field:
+                <select name="EducationField">
+                    <option value="Life Sciences" {% if emp.educationfield=="Life Sciences" %}selected{% endif %}>Life Sciences</option>
+                    <option value="Medical" {% if emp.educationfield=="Medical" %}selected{% endif %}>Medical</option>
+                    <option value="Marketing" {% if emp.educationfield=="Marketing" %}selected{% endif %}>Marketing</option>
+                    <option value="Technical Degree" {% if emp.educationfield=="Technical Degree" %}selected{% endif %}>Technical Degree</option>
+                    <option value="Human Resources" {% if emp.educationfield=="Human Resources" %}selected{% endif %}>Human Resources</option>
+                    <option value="Other" {% if emp.educationfield=="Other" %}selected{% endif %}>Other</option>
+                </select>
+            </label>
+            <label>Gender:
+                <select name="Gender">
+                    <option value="Male" {% if emp.gender=="Male" %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if emp.gender=="Female" %}selected{% endif %}>Female</option>
+                </select>
+            </label>
+            <label>Job Role:
+                <select name="JobRole">
+                    <option value="Sales Executive" {% if emp.jobrole=="Sales Executive" %}selected{% endif %}>Sales Executive</option>
+                    <option value="Research Scientist" {% if emp.jobrole=="Research Scientist" %}selected{% endif %}>Research Scientist</option>
+                    <option value="Laboratory Technician" {% if emp.jobrole=="Laboratory Technician" %}selected{% endif %}>Laboratory Technician</option>
+                    <option value="Manufacturing Director" {% if emp.jobrole=="Manufacturing Director" %}selected{% endif %}>Manufacturing Director</option>
+                    <option value="Healthcare Representative" {% if emp.jobrole=="Healthcare Representative" %}selected{% endif %}>Healthcare Representative</option>
+                    <option value="Manager" {% if emp.jobrole=="Manager" %}selected{% endif %}>Manager</option>
+                    <option value="Sales Representative" {% if emp.jobrole=="Sales Representative" %}selected{% endif %}>Sales Representative</option>
+                    <option value="Human Resources" {% if emp.jobrole=="Human Resources" %}selected{% endif %}>Human Resources</option>
+                    <option value="Research Director" {% if emp.jobrole=="Research Director" %}selected{% endif %}>Research Director</option>
+                </select>
+            </label>
+            <label>Marital Status:
+                <select name="MaritalStatus">
+                    <option value="Single" {% if emp.maritalstatus=="Single" %}selected{% endif %}>Single</option>
+                    <option value="Married" {% if emp.maritalstatus=="Married" %}selected{% endif %}>Married</option>
+                    <option value="Divorced" {% if emp.maritalstatus=="Divorced" %}selected{% endif %}>Divorced</option>
+                </select>
+            </label>
+            <label>OverTime:
+                <select name="OverTime">
+                    <option value="Yes" {% if emp.overtime=="Yes" %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if emp.overtime=="No" %}selected{% endif %}>No</option>
+                </select>
+            </label>
+            <div class="full-width">
+                <button type="submit">Update Employee</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
