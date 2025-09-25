@@ -10,43 +10,51 @@ The application provides HR professionals with a dashboard to:
 📂 Project Structure
 
 ├── artifacts/
-|   |__data.csv
-|   |__model.pkl
-|   |__preprocessor.pkl
-|   |__train.csv
-|   |__test.csv 
-|__logs          
+│   ├── data.csv
+│   ├── model.pkl
+│   ├── preprocessor.pkl
+│   ├── train.csv
+│   └── test.csv
+│
+├── logs/                      
+│
 ├── notebook/
-|   |__data/
-|   |  |__clean_hr_data.csv
-|   |  |__HRlytic-Attrition.csv
-|   |__eda.ipynb
-|   |__model.ipynb        
-├── src/                    
-│   ├── components/           
+│   ├── data/
+│   │   ├── clean_hr_data.csv
+│   │   └── HRlytic-Attrition.csv
+│   ├── eda.ipynb
+│   └── model.ipynb
+│
+├── src/
+│   ├── components/
 │   │   ├── data_ingestion.py
-|   |   |__ data_transformation.py
-|   |   |__ model_trainer.py  
+│   │   ├── data_transformation.py
+│   │   └── model_trainer.py
+│   │
+│   ├── pipeline/
+│   │   ├── predict_pipeline.py
 │   │   └── __init__.py
-|   |__ pipeline/
-|   |   |__ predict_pipeline.py
-|   |   |__ __init__.py  
-│   └── __init__.py
-|   |__ exception.py
-|   |__ logger.py
-|   |__ utils.py
-├── templates/              
+│   │
+│   ├── __init__.py
+│   ├── exception.py
+│   ├── logger.py
+│   └── utils.py
+│
+├── templates/
 │   ├── index.html
 │   ├── dashboard.html
 │   ├── add_employee.html
 │   ├── edit_employee.html
 │   └── predict.html
-└── venv 
-|__ .env
-|__ .gitignore
-|__ app.py
-|__ requirements.txt
-|__ setup.py
+│
+├── venv/                      
+│
+├── .env
+├── .gitignore
+├── app.py
+├── requirements.txt
+└── setup.py
+
 
 ⚙️ Features
 
