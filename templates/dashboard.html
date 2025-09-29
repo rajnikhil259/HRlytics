@@ -4,15 +4,89 @@
     <meta charset="UTF-8">
     <title>Employee Dashboard</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f2f2f2; }
-        h1 { text-align: center; }
-        .container { max-width: 1000px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
-        th { background: #007BFF; color: white; }
-        a.button, button { background: #007BFF; color: white; padding: 6px 12px; border: none; border-radius: 5px; text-decoration: none; cursor: pointer; }
-        a.button:hover, button:hover { background: #0056b3; }
-        .add-btn { margin-bottom: 15px; display: inline-block; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #C2A68C; 
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        .container { 
+            max-width: 1000px; 
+            margin: auto; 
+            background: #E6D8C3; 
+            padding: 35px 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        }
+
+        h1 { 
+            text-align: center; 
+            color: #5a4634;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        .add-btn { 
+            margin-bottom: 20px; 
+            display: inline-block; 
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td { 
+            padding: 14px 12px; 
+            border-bottom: 1px solid #ddd; 
+            text-align: left;
+        }
+
+        th { 
+            background: #8f745d; 
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: #f5f0ea;
+        }
+
+        a.button, button { 
+            background: #8f745d; 
+            color: white; 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            cursor: pointer; 
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        a.button:hover, button:hover { 
+            background: #6d5845;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            table, th, td {
+                font-size: 13px;
+            }
+            .container {
+                padding: 25px 20px;
+            }
+            a.button, button {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>

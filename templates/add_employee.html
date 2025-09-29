@@ -4,35 +4,128 @@
     <meta charset="UTF-8">
     <title>Add Employee</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f2f2f2; }
-        .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
-        form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        label { font-weight: bold; }
-        input, select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
-        .full-width { grid-column: span 2; text-align: center; }
-        button { background: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #0056b3; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #C2A68C; 
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        .container { 
+            max-width: 850px; 
+            margin: auto; 
+            background: #E6D8C3; 
+            padding: 40px 35px; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        }
+
+        h1 { 
+            text-align: center; 
+            margin-bottom: 30px; 
+            color: #5a4634;
+            font-size: 28px;
+        }
+
+        form { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+        }
+
+        label { 
+            font-weight: bold;
+            color: #5a4634; 
+            display: block;    
+            margin-bottom: 15px;  
+            font-weight: bold;
+        }
+
+        input, select { 
+            width: 100%; 
+            padding: 10px 12px; 
+            margin-top: 6px; 
+            border-radius: 8px; 
+            border: 1px solid #b8a089; 
+            background: #fff;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #8f745d;
+            box-shadow: 0 0 5px rgba(143,116,93,0.5);
+        }
+
+        .full-width { 
+            grid-column: span 2; 
+            text-align: center; 
+            margin-top: 15px;
+        }
+
+        button { 
+            background: #8f745d; 
+            color: white; 
+            padding: 14px 28px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover { 
+            background: #6d5845; 
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Add Employee</h1>
         <form method="POST">
-            <label>Name: <input type="text" name="name" required></label>
-            <label>Age: <input type="number" name="age" required></label>
-            <label>Distance From Home: <input type="number" name="DistanceFromHome"></label>
-            <label>Number of Companies Worked: <input type="number" name="NumCompaniesWorked"></label>
-            <label>Percent Salary Hike: <input type="number" name="PercentSalaryHike"></label>
-            <label>Stock Option Level: <input type="number" name="StockOptionLevel"></label>
-            <label>Training Times Last Year: <input type="number" name="TrainingTimesLastYear"></label>
-            <label>Years At Company: <input type="number" name="YearsAtCompany"></label>
-            <label>Years Since Last Promotion: <input type="number" name="YearsSinceLastPromotion"></label>
-            <label>Years With Current Manager: <input type="number" name="YearsWithCurrManager"></label>
-            <label>Monthly Income: <input type="number" name="MonthlyIncome"></label>
-            <label>Total Working Years: <input type="number" name="TotalWorkingYears"></label>
-            <label>Years In Current Role: <input type="number" name="YearsInCurrentRole"></label>
-            
-            
+            <label>Name:
+                <input type="text" name="name" required>
+            </label>
+            <label>Age:
+                <input type="number" name="age" required>
+            </label>
+            <label>Distance From Home:
+                <input type="number" name="DistanceFromHome">
+            </label>
+            <label>Number of Companies Worked:
+                <input type="number" name="NumCompaniesWorked">
+            </label>
+            <label>Percent Salary Hike:
+                <input type="number" name="PercentSalaryHike">
+            </label>
+            <label>Stock Option Level:
+                <input type="number" name="StockOptionLevel">
+            </label>
+            <label>Training Times Last Year:
+                <input type="number" name="TrainingTimesLastYear">
+            </label>
+            <label>Years At Company:
+                <input type="number" name="YearsAtCompany">
+            </label>
+            <label>Years Since Last Promotion:
+                <input type="number" name="YearsSinceLastPromotion">
+            </label>
+            <label>Years With Current Manager:
+                <input type="number" name="YearsWithCurrManager">
+            </label>
+            <label>Monthly Income:
+                <input type="number" name="MonthlyIncome">
+            </label>
+            <label>Total Working Years:
+                <input type="number" name="TotalWorkingYears">
+            </label>
+            <label>Years In Current Role:
+                <input type="number" name="YearsInCurrentRole">
+            </label>
+
             <label>Education:
                 <select name="Education">
                     <option value="1">Below College</option>
@@ -88,8 +181,6 @@
                     <option value="4">Best</option>
                 </select>
             </label>
-            
-            
             <label>Business Travel:
                 <select name="BusinessTravel">
                     <option value="Non-Travel">Non-Travel</option>
@@ -146,6 +237,7 @@
                     <option value="No">No</option>
                 </select>
             </label>
+
             <div class="full-width">
                 <button type="submit">Add Employee</button>
             </div>
