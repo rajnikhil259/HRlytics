@@ -57,6 +57,10 @@ class Employee(db.Model):
     overtime = db.Column(db.String(10), nullable=True)
 
 @app.route('/')
+def home():
+    return render_template('landing.html')    
+
+@app.route('/dashboard')
 def dashboard():
     try:
         employees = Employee.query.all()
