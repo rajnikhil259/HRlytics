@@ -144,7 +144,7 @@ ENV/
 env.bak/
 venv.bak/
 notebook/catboost_info/
-artifacts/
+
 catboost_info/
 
 
