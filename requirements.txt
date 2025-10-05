@@ -11,4 +11,5 @@ Flask
 flask_sqlalchemy
 dotenv
 psycopg2
+gunicorn
 #-e .
