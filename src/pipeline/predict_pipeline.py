@@ -9,10 +9,10 @@ import pickle
 
 class Predictor:
     def __init__(self):
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-   
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         model_path = os.path.join(BASE_DIR, "artifacts", "model.pkl")
-        preprocessor_path = os.path.join(BASE_DIR, "artifacts", "proprocessor.pkl") 
+        preprocessor_path = os.path.join(BASE_DIR, "artifacts", "proprocessor.pkl")
+
 
         with open(model_path, "rb") as f:
             self.model = pickle.load(f)
